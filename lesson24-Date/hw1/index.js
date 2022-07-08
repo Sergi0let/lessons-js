@@ -1,5 +1,5 @@
-export const getDiff = (startDate, endDate) => {
-  let mlSeconds = (endDate - startDate) / 1000;
+const getDiff = (startDate, endDate) => {
+  let mlSeconds = Math.abs(startDate - endDate) / 1000;
 
   const days = Math.floor(mlSeconds / 86400);
   mlSeconds -= days * 86400;
@@ -10,10 +10,10 @@ export const getDiff = (startDate, endDate) => {
   const minutes = Math.floor(mlSeconds / 60) % 60;
   mlSeconds -= minutes * 60;
 
-  const seconds = mlSeconds % 60;
+  const seconds = Math.floor(mlSeconds % 60);
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
 
-// const dateOne = new Date(2022, 6, 1, 0, 1, 0);
-// const dateTwo = new Date(2022, 7, 7, 59, 59, 59);
-// console.log(getDiff(dateOne, dateTwo));
+const dateOne = new Date(2020, 2, 1, 10, 10, 30);
+const dateTwo = new Date(2020, 1, 1, 20, 0, 1);
+console.log(getDiff(dateOne, dateTwo));
