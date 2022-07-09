@@ -1,28 +1,3 @@
-// let currentTime = 0;
-// const timer = {
-//   secondsPassed: 0,
-//   minsPassed: 0,
-//   startTimer() {
-//     const intervalId = setInterval(() => {
-//       let seconds = this.secondsPassed;
-//       let mins = this.minsPassed;
-//       seconds += 1;
-//       if (seconds === 60) {
-//         mins += 1;
-//         seconds = 0;
-//       }
-//       console.log(mins, seconds);
-//     }, 1000);
-//   },
-//   getTime() {
-//     return currentTime;
-//   },
-//   stopTimer() {},
-//   resetTimer() {},
-// };
-
-// timer.startTimer();
-
 // 1 створюємо обєкт
 // 2 в обєкт пишемо властивості secondPassed: 0, minsPassed: 0
 // 3 в обєкті створюємо метод startTimer
@@ -37,15 +12,92 @@
 const timer = {
   secondPassed: 0,
   minsPassed: 0,
-  // startTimer
   startTimer() {
-    setInterval(() => {
+    const idTimer = setInterval(() => {
       this.secondPassed += 1;
-      console.log(this.secondPassed);
+      if (this.secondPassed === 60) {
+        this.minsPassed += 1;
+        this.secondPassed = 0;
+      }
+      console.log(this.minsPassed, this.secondPassed);
     }, 1000);
   },
-  // getTime
   getTime() {
-    console.log(this.secondPassed.bind(this.startTimer));
+    const minutes = this.secondPassed.call(this.startTimer);
+    const second = this.minsPassed.call(this.startTimer);
+    console.log(minutes, second);
   },
 };
+// return `${this.minsPassed} ${this.secondPassed} `;
+
+// const timerOne = timer.startTimer.bind(timer);
+timer.startTimer();
+timer.getTime();
+
+/*
+const user = {
+  firstName: 'John',
+  lastName: 'Doe',
+  getFullName() {
+    console.log(this.firstName, this.lastName);
+  },
+};
+
+// .bind
+const func = user.getFullName.bind(user);
+func();
+*/
+// ------------------------
+/*
+const userOne = {
+  name: 'John',
+  sayHi(age, message) {
+    console.log(`${message}. I'm ${this.name}. I.m ${age}`);
+  },
+};
+const funcOne = userOne.sayHi;
+
+const anotherName = {
+  name: 'Antyan',
+};
+
+funcOne.apply(anotherName, [55, 'Hello']);
+*/
+
+/*
+const callbackPrompt = {
+  message: 'Tell me you number',
+  showPrompt() {
+    const promptNumber = prompt(this.message);
+    console.log(promptNumber);
+  },
+  showDeferredPrompt(ms) {
+    setTimeout(this.showPrompt.bind(this), ms);
+  },
+};
+// callbackPrompt.showPrompt();
+callbackPrompt.showDeferredPrompt(1000);
+*/
+/*
+function defer(func, ms) {
+  return function () {
+    setTimeout(() => func.apply(this, arguments), ms);
+  };
+}
+
+const sayHi = () => console.log('hello');
+const sum = (a, b) => console.log(a + b);
+const user = {
+  name: 'Tom',
+  sayHi() {
+    console.log(`hi, I'm ${this.name}`);
+  },
+};
+
+const deferredSayHi = defer(sayHi, 2000);
+const deferredSum = defer(sum, 2000);
+const deferredHi = defer(user.sayHi, 1000);
+deferredSayHi();
+deferredSum(2, 2);
+deferredHi.call({ name: 'bob' });
+*/
