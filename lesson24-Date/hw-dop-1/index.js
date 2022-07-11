@@ -30,3 +30,17 @@ function studentsBirthDays(students) {
   );
 }
 console.log(studentsBirthDays(students));
+
+function counter() {
+  let count = 0;
+  return function () {
+    console.log(++count);
+  };
+}
+
+let counter1 = counter();
+let counter2 = counter();
+
+counter1();
+counter1();
+counter2();
