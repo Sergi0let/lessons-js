@@ -9,95 +9,51 @@
 // 6 при startTimer відлік повинний продовжувати з збереженої точки використовуэмо clearInterval.
 // 7. в обєкті створюємо метод resetTimer який скидує на нуль. Можливо через присвоєння 0.4
 
+// export const timer = {
+//   secondPassed: 0,
+//   minsPassed: 0,
+//   startTimer() {
+//     const idTimer = setInterval(() => {
+//       this.secondPassed += 1;
+//       if (this.secondPassed === 60) {
+//         this.minsPassed += 1;
+//         this.secondPassed = 0;
+//       }
+//       console.log(this.minsPassed, this.secondPassed);
+//       return this;
+//     }, 1000);
+//   },
+//   getTime() {
+//     let minutes = this.minsPassed;
+//     let seconds = this.secondPassed;
+//     if (minutes <= 9) minutes = '0' + minutes;
+//     if (seconds <= 9) seconds = '0' + seconds;
+
+//     return `${minutes}:${seconds} `;
+//   },
+
+//   stopTime() {
+//     this.secondPassed = this.startTimer();
+//   },
+// };
+
+// timer.startTimer();
+// timer.getTime();
 const timer = {
   secondPassed: 0,
   minsPassed: 0,
   startTimer() {
-    const idTimer = setInterval(() => {
+    setInterval(() => {
       this.secondPassed += 1;
-      if (this.secondPassed === 60) {
-        this.minsPassed += 1;
-        this.secondPassed = 0;
-      }
-      console.log(this.minsPassed, this.secondPassed);
+      console.log(this.secondPassed);
+      return this;
     }, 1000);
   },
   getTime() {
-    const minutes = this.secondPassed.call(this.startTimer);
-    const second = this.minsPassed.call(this.startTimer);
-    console.log(minutes, second);
+    console.log('time', this.secondPassed);
+    return this.secondPassed;
   },
 };
-// return `${this.minsPassed} ${this.secondPassed} `;
 
-// const timerOne = timer.startTimer.bind(timer);
 timer.startTimer();
 timer.getTime();
-
-/*
-const user = {
-  firstName: 'John',
-  lastName: 'Doe',
-  getFullName() {
-    console.log(this.firstName, this.lastName);
-  },
-};
-
-// .bind
-const func = user.getFullName.bind(user);
-func();
-*/
-// ------------------------
-/*
-const userOne = {
-  name: 'John',
-  sayHi(age, message) {
-    console.log(`${message}. I'm ${this.name}. I.m ${age}`);
-  },
-};
-const funcOne = userOne.sayHi;
-
-const anotherName = {
-  name: 'Antyan',
-};
-
-funcOne.apply(anotherName, [55, 'Hello']);
-*/
-
-/*
-const callbackPrompt = {
-  message: 'Tell me you number',
-  showPrompt() {
-    const promptNumber = prompt(this.message);
-    console.log(promptNumber);
-  },
-  showDeferredPrompt(ms) {
-    setTimeout(this.showPrompt.bind(this), ms);
-  },
-};
-// callbackPrompt.showPrompt();
-callbackPrompt.showDeferredPrompt(1000);
-*/
-/*
-function defer(func, ms) {
-  return function () {
-    setTimeout(() => func.apply(this, arguments), ms);
-  };
-}
-
-const sayHi = () => console.log('hello');
-const sum = (a, b) => console.log(a + b);
-const user = {
-  name: 'Tom',
-  sayHi() {
-    console.log(`hi, I'm ${this.name}`);
-  },
-};
-
-const deferredSayHi = defer(sayHi, 2000);
-const deferredSum = defer(sum, 2000);
-const deferredHi = defer(user.sayHi, 1000);
-deferredSayHi();
-deferredSum(2, 2);
-deferredHi.call({ name: 'bob' });
-*/
