@@ -21,5 +21,5 @@ export const onToggleTask = e => {
     return task;
   });
   setItem('tasksList', newTasksList);
-  renderTasks();
+  renderTasks(localStorage);
 };
