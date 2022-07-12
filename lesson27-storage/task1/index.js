@@ -14,24 +14,23 @@ const getLocalStorageData = () => {
     }
     return {
       ...acc,
-      [key]: value,
+      [key]: newValue,
     };
   }, {});
 };
+
 console.log('function getLocalStorageData: ', getLocalStorageData());
 
-console.log();
-
-const user = {
-  name: 'Tom',
-  age: 17,
-  isStudent: false,
-  driverLicense: null,
-  hobbies: ['football', 'diving'],
-  education: [
-    {
-      name: 'MIT precourse',
-      graduateDate: '2020-05-04T14:48:46.105Z',
-    },
-  ],
-};
+// const user = {
+//   name: 'Tom',
+//   age: 17,
+//   isStudent: false,
+//   driverLicense: null,
+//   hobbies: ['football', 'diving'],
+//   education: [
+//     {
+//       name: 'MIT precourse',
+//       graduateDate: '2020-05-04T14:48:46.105Z',
+//     },
+//   ],
+// };
