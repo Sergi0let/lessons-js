@@ -1,12 +1,10 @@
 import { initTodoListHandlers } from './todoList.js';
 import { renderTasks } from './renderer.js';
-import { setItem, getItem } from './storage.js';
+import { setItem, getItem } from './storage';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
   initTodoListHandlers();
-  setItem();
-  getItem();
 });
 
 const onStarageChange = e => {
