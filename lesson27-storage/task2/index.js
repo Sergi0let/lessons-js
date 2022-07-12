@@ -1,33 +1,34 @@
-// const counterElem = document.querySelector('.counter');
-// const counterValueElem = document.querySelector('.counter__value');
-// const onCounterChange = e => {
-//   const isButton = e.target.classList.contains('counter__button');
+const counterElem = document.querySelector('.counter');
+const counterValueElem = document.querySelector('.counter__value');
 
-//   if (!isButton) {
-//     return;
-//   }
+const onCounterChange = e => {
+  const isButton = e.target.classList.contains('counter__button');
 
-//   const action = e.target.dataset.action;
+  if (!isButton) {
+    return;
+  }
 
-//   const oldValue = Number(counterValueElem.textContent);
+  const action = e.target.dataset.action;
 
-//   const newValue = action === 'decrease' ? oldValue - 1 : oldValue + 1;
+  const oldValue = Number(counterValueElem.textContent);
 
-//   localStorage.setItem('counterValue', newValue);
+  const newValue = action === 'decrease' ? oldValue - 1 : oldValue + 1;
 
-//   counterValueElem.textContent = newValue;
-// };
+  localStorage.setItem('counterValue', newValue);
 
-// counterElem.addEventListener('click', onCounterChange);
+  counterValueElem.textContent = newValue;
+};
 
-// const onStorageChange = e => {
-//   counterValueElem.textContent = e.newValue;
-// };
+counterElem.addEventListener('click', onCounterChange);
 
-// window.addEventListener('storage', onStorageChange);
+const onStorageChange = e => {
+  counterValueElem.textContent = e.newValue;
+};
 
-// const onDocumentLoaded = () => {
-//   counterValueElem.textContent = localStorage.getItem('counterValue' || 0);
-// };
+window.addEventListener('storage', onStorageChange);
 
-// document.addEventListener('DOMContentLoaded', onDocumentLoaded);
+const onDocumentLoaded = () => {
+  counterValueElem.textContent = localStorage.getItem('counterValue' || 0);
+};
+
+document.addEventListener('DOMContentLoaded', onDocumentLoaded);
