@@ -90,29 +90,20 @@ const arrPrice = [1.23, 2.04, 5, 12];
 
 //---------------------------------------
 // Массив случайных чисел
+
 /*
 const getRandomNumbers = (length, from, to) => {
-  if (
-    !Number.parseInt(length) ||
-    !Number.parseInt(from) ||
-    !Number.parseInt(to)
-  )
-    return null;
-  let randomArr = [];
-
-  for (let i = 1; i <= length; i += 1) {
-    randomArr.push(Math.round(Math.random() * (from - to) + to));
-  }
-
-  return randomArr;
+  const start = Math.ceil(from);
+  const finish = Math.ceil(to);
+  return finish - start <= 1
+    ? null
+    : new Array(length).fill().map(el => Math.floor(Math.random() * (finish - start)) + start);
 };
-
 // examples
-console.log(getRandomNumbers(5, 1, 3.22)); // ==> [3, 2, 2, 2, 2]
-console.log(getRandomNumbers(5, 1.4, 3.22)); // ==> [2, 2, 2, 3, 2]
-console.log(getRandomNumbers(5, 1.4, 'rex')); // ==> [3, 3, 2, 3, 2]
+console.log(getRandomNumbers(5, 4, 6)); // ==> [3, 2, 2, 2, 2]
+console.log(getRandomNumbers(5, 1.4, 5)); // ==> [2, 2, 2, 3, 2]
+console.log(getRandomNumbers(5, 1.4, 2.9)); // ==> [3, 3, 2, 3, 2]
 */
-
 //---------------------------------------
 /*
 const superRound = (num, prec) => {
