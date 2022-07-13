@@ -1,8 +1,4 @@
-import { getItem, setItem } from './storage.js';
-
-const listElem = document.querySelector('.list');
-
-const compareTasks = (a, b) => a.done - b.done;
+import { getItem } from './storage.js';
 
 const createCheckbox = ({ done, id }) => {
   const checkboxElem = document.createElement('input');
@@ -17,10 +13,13 @@ const createCheckbox = ({ done, id }) => {
 const createListItem = ({ text, done, id }) => {
   const listItemElem = document.createElement('li');
   listItemElem.classList.add('list__item');
-  const checkboxElem = createCheckbox({ done, id });
+  listItemElem.setAttribute('data-id', id);
+
   if (done) {
     listItemElem.classList.add('list__item_done');
   }
+
+  const checkboxElem = createCheckbox({ done, id });
   listItemElem.append(checkboxElem, text);
 
   return listItemElem;
@@ -28,9 +27,13 @@ const createListItem = ({ text, done, id }) => {
 
 export const renderTasks = () => {
   const tasksList = getItem('tasksList') || [];
+  const listElem = document.querySelector('.list');
 
   listElem.innerHTML = '';
-  const tasksElems = tasksList.sort(compareTasks).map(createListItem);
+  const tasksElems = tasksList
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => a.done - b.done)
+    .map(({ text, done, id }) => createListItem({ text, done, id }));
 
   listElem.append(...tasksElems);
 };
