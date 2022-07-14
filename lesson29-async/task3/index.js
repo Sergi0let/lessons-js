@@ -1,9 +1,30 @@
-// const sum = (a, b) => a + b;
+// const main = () => {
+//   console.log('1');
+//   setTimeout(() => console.log('2'), 2000);
+//   console.log('3');
+//   setTimeout(() => console.log('4'), 1000);
+//   console.log('5');
+// };
+// main();
+// console.log('6');
+const printing = () => {
+  console.log(1);
 
-const sum = a => b => a + b;
+  setTimeout(function () {
+    console.log(5);
+  }, 1000);
 
-const add3 = sum(3);
+  console.log(2);
 
-const result = add3(5);
+  setTimeout(function () {
+    console.log(4);
+  }, 0);
 
-console.log(result);
+  setTimeout(function () {
+    console.log(6);
+  }, 2000);
+
+  console.log(3);
+};
+
+printing();
