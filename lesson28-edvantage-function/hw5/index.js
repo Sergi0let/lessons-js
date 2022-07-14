@@ -1,93 +1,48 @@
-// shmoment(new Date(2020, 0, 7, 17, 17, 17)).add('minutes', 2).add('days', 8).subtract('years', 1).result(); // ... Jan 15 2019 17:19:17 ...
-// 'years', 'months', 'days', 'hours', 'minutes', 'seconds', 'milliseconds'
+export const shmoment = date => {
+  let result = new Date(date);
+  const newSetDate = {
+    add(value, valueDate) {
+      if (value === 'years')
+        result = new Date(result.setFullYear(result.getFullYear() + valueDate));
+      if (value === 'months') result = new Date(result.setMonth(result.getMonth() + valueDate));
+      if (value === 'days') result = new Date(result.setDate(result.getDate() + valueDate));
+      if (value === 'hours') result = new Date(result.setHours(result.getHours() + valueDate));
+      if (value === 'minutes')
+        result = new Date(result.setMinutes(result.getMinutes() + valueDate));
+      if (value === 'seconds')
+        result = new Date(result.setSeconds(result.getSeconds() + valueDate));
+      if (value === 'milliseconds')
+        result = new Date(result.setMilliseconds(result.getMilliseconds() + valueDate));
+      return this;
+    },
+    subtract(value, valueDate) {
+      if (value === 'years')
+        result = new Date(result.setFullYear(result.getFullYear() - valueDate));
+      if (value === 'months') result = new Date(result.setMonth(result.getMonth() - valueDate));
+      if (value === 'days') result = new Date(result.setDate(result.getDate() - valueDate));
+      if (value === 'hours') result = new Date(result.setHours(result.getHours() - valueDate));
+      if (value === 'minutes')
+        result = new Date(result.setMinutes(result.getMinutes() - valueDate));
+      if (value === 'seconds')
+        result = new Date(result.setSeconds(result.getSeconds() - valueDate));
+      if (value === 'milliseconds')
+        result = new Date(result.setMilliseconds(result.getMilliseconds() - valueDate));
 
-// let date = new Date(2020, 0, 7, 17, 17, 17).toISOString();
-// // let years = date.getFullYear();
-// console.log(date.split(':'));
-// // console.log(+5);
-// console.log(date);
-
-// const shmoment = date => {
-//   let result = new Date(date);
-
-//   const setDate = {
-//     years: result.setFullYear(result.getFullYear()),
-//     months: result.setMonth(result.setMonth()),
-//     days: result.setDate(result.getDate()),
-//     hours: result.setHours(result.getHours()),
-//     minutes: result.setMinutes(result.getMinutes()),
-//     seconds: result.setSeconds(result.getSeconds()),
-//     milliseconds: result.setMilliseconds(result.getMilliseconds()),
-//   };
-
-//   return {
-//     add(position, value) {
-//       setDate[position](+value);
-//       return this;
-//     },
-//     subtract(position, value) {
-//       setDate[position](-value);
-//       return this;
-//     },
-//     result() {
-//       return new Date(result);
-//     },
-//   };
-// };
-// const date1 = shmoment(2020, 0, 7, 17, 17, 17);
-// console.log(date1.result);
-// console.log(
-//   shmoment(new Date(2020, 0, 7, 17, 17, 17))
-//     .add('minutes', 2)
-//     .add('days', 8)
-//     .subtract('years', 1)
-//     .result(),
-// );
-// export const shmoment = date => {
-//   let result = new Date(date);
-//   const newSetDate = {
-//     add(value, valueDate) {
-//       if (value === 'years')
-//         result = new Date(result.setFullYear(result.getFullYear() + valueDate));
-//       if (value === 'months') result = new Date(result.setMonth(result.getMonth() + valueDate));
-//       if (value === 'days') result = new Date(result.setDate(result.getDate() + valueDate));
-//       if (value === 'hours') result = new Date(result.setHours(result.getHours() + valueDate));
-//       if (value === 'minutes')
-//         result = new Date(result.setMinutes(result.getMinutes() + valueDate));
-//       if (value === 'seconds')
-//         result = new Date(result.setSeconds(result.getSeconds() + valueDate));
-//       if (value === 'milliseconds')
-//         result = new Date(result.setMilliseconds(result.getMilliseconds() + valueDate));
-//       return this;
-//     },
-//     subtract(value, valueDate) {
-//       if (value === 'years')
-//         result = new Date(result.setFullYear(result.getFullYear() - valueDate));
-//       if (value === 'months') result = new Date(result.setMonth(result.getMonth() - valueDate));
-//       if (value === 'days') result = new Date(result.setDate(result.getDate() - valueDate));
-//       if (value === 'hours') result = new Date(result.setHours(result.getHours() - valueDate));
-//       if (value === 'minutes')
-//         result = new Date(result.setMinutes(result.getMinutes() - valueDate));
-//       if (value === 'seconds')
-//         result = new Date(result.setSeconds(result.getSeconds() - valueDate));
-//       if (value === 'milliseconds')
-//         result = new Date(result.setMilliseconds(result.getMilliseconds() - valueDate));
-
-//       return this;
-//     },
-//     result() {
-//       return result;
-//     },
-//   };
-//   return newSetDate;
-// };
-// console.log(
-//   shmoment(new Date(2020, 0, 7, 17, 17, 17))
-//     .add('minutes', 2)
-//     .add('days', 8)
-//     .subtract('years', 1)
-//     .result(),
-// ); // ... Jan 15 2019 17:19:17 ...
+      return this;
+    },
+    result() {
+      return result;
+    },
+  };
+  return newSetDate;
+};
+console.log(
+  shmoment(new Date(2020, 0, 7, 17, 17, 17))
+    .add('minutes', 2)
+    .add('days', 8)
+    .subtract('years', 1)
+    .result(),
+); // ... Jan 15 2019 17:19:17 ...
 
 /*
 const shmoment = date => {

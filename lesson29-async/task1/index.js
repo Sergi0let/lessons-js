@@ -14,7 +14,7 @@ for (let i = 0; i < 1e9; i++) {
 const endTime = new Date();
 console.log(`Cycle took ${endTime - startTime}ms`);
 */
-
+/*
 const addImage = (imgSrc, callback) => {
   const imgElem = document.createElement('img');
   imgElem.setAttribute('alt', 'My photo');
@@ -50,3 +50,4 @@ addImage(
   'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
   onImageLoaded,
 );
+*/
