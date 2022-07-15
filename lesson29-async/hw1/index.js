@@ -1,4 +1,13 @@
 // in: number, func, context, ...args
 // func
+// log
+//
+const delay = (delay, callback, context, ...args) => {
+  return setTimeout(() => {
+    callback.call(context, args);
+  }, delay);
+};
 
-const delay = (delay, callback, context, ...args) => {};
+function func(num) {
+  console.log(num);
+}
