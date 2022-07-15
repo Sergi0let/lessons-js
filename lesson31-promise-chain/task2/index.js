@@ -1,5 +1,5 @@
 // asyncCalculator
-
+/*
 const asyncCalculator = num =>
   new Promise(resolve => {
     setTimeout(() => {
@@ -24,3 +24,4 @@ const asyncCalculator = num =>
     });
 
 asyncCalculator(4).then(value => console.log(value));
+*/
