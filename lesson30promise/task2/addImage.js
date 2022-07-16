@@ -6,7 +6,7 @@ export const addImage = (imgSrc, callbak) => {
   const conteinerElem = document.querySelector('.page');
   conteinerElem.append(imageElem);
 
-  callbak = erorr => {
+  callbak = eror => {
     if (error) {
       console.log('error');
       return;
@@ -18,5 +18,5 @@ export const addImage = (imgSrc, callbak) => {
   };
 
   imageElem.addEventListener('load', onImageLoaded);
-  imgElem.addEventListener('error', () => callback('Image load failed'));
+  imageElem.addEventListener('error', () => callback('Image load failed'));
 };
