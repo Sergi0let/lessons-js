@@ -3,7 +3,7 @@
 // in: arr
 // out: new arr
 
-//log:
+// log:
 // 1. if Array is not Array return null
 // 2. make new arr - result;
 // 3. iterate on arr and push element to result
