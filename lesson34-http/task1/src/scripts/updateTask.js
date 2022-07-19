@@ -13,8 +13,20 @@ export const onToggleTask = e => {
 
   const tasksList = getItem('tasksList');
   const taskId = e.target.dataset.id;
+  console.log(taskId);
 
   // -------------------------------------
+  if (isDelete) {
+    console.log('isDelete');
+    console.log(taskId);
+
+    deleteTask(taskId)
+      .then(() => getTasksList())
+      .then(newTasksList => {
+        setItem('tasksList', newTasksList);
+        renderTasks();
+      });
+  }
   if (isCheckbox) {
     console.log('isCheckbox');
     console.log(taskId);
@@ -28,20 +40,7 @@ export const onToggleTask = e => {
       done,
       finishDate: done ? new Date().toISOString() : null,
     };
-
     updateTask(taskId, updatedTask)
-      .then(() => getTasksList())
-      .then(newTasksList => {
-        setItem('tasksList', newTasksList);
-        renderTasks();
-      });
-  }
-
-  if (isDelete) {
-    console.log('isDelete');
-    console.log(taskId);
-
-    deleteTask(taskId)
       .then(() => getTasksList())
       .then(newTasksList => {
         setItem('tasksList', newTasksList);
