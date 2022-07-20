@@ -29,7 +29,7 @@ const readUserData = () => {
       return response.json();
     })
     .then(data => {
-      alert(JSON.stringify(data, null, 2));
+      alert(JSON.stringify(data, null));
       formElem.reset();
     });
 };
