@@ -12,6 +12,13 @@ const createUser = userData => {
     body: JSON.stringify(userData),
   });
 };
+const getUser = () => {
+  return fetch(baseUrl);
+};
+
+getUser()
+  .then(data => data.json())
+  .then(init => console.log(init));
 
 const checkInputs = () => {
   const emailInElem = document.querySelector('input[type="email"]').reportValidity();
@@ -30,10 +37,6 @@ const readUserData = () => {
     })
     .then(data => alert(JSON.stringify(data, null, 2)));
   formElem.reset();
-};
-
-const alertData = data => {
-  alert(data);
 };
 
 formElem.addEventListener('input', checkInputs);
