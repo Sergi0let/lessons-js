@@ -4,17 +4,13 @@ const formElem = document.querySelector('.login-form');
 const buttonElem = document.querySelector('.submit-button');
 
 const createUser = userData => {
-  fetch(baseUrl, {
+  return fetch(baseUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(userData),
-  })
-    .then(response => {
-      return 'good';
-    })
-    .then(data => alert({ data }));
+  });
 };
 
 const checkInputs = () => {
@@ -28,8 +24,16 @@ const checkInputs = () => {
 };
 
 const readUserData = () => {
-  createUser(Object.fromEntries(new FormData(formElem)));
+  createUser(Object.fromEntries(new FormData(formElem)))
+    .then(response => {
+      return response.json();
+    })
+    .then(data => alert(JSON.stringify(data, null, 2)));
   formElem.reset();
+};
+
+const alertData = data => {
+  alert(data);
 };
 
 formElem.addEventListener('input', checkInputs);
